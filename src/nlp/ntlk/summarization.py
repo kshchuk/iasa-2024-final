@@ -1,6 +1,6 @@
 import math
 
-from nltk import WordNetLemmatizer
+from nltk import WordNetLemmatizer, word_tokenize
 from nltk.corpus import stopwords
 
 from src.nlp.ntlk.preprocessor import NTLKPreprocessor
@@ -11,6 +11,57 @@ class TF_IDFSummarizator:
 
     def __init__(self, lemmatiser=WordNetLemmatizer(), stop_words=stopwords.words('english')):
         self._preprocessor = NTLKPreprocessor(lemmatiser, stop_words)
+
+    def summarize(self, text: str, num_sentences: int) -> str:
+        """
+        Summarize a text using the TF-IDF algorithm
+
+        :param text: (list[str]) The list of text to summarize
+        :param num_sentences: The number of sentences to include in the summary
+        :return: (str) The summary of the text
+        """
+        sentences = text.split(".")
+        sentences = [sentence for sentence in sentences if len(sentence) > 1]
+
+        frequency_matrix = self._create_frequency_matrix(sentences)  # Frequency of words in each sentence
+
+        # Number of times term appears in a document / Total number of terms in the document
+        tf_matrix = self._create_tf_matrix(frequency_matrix)
+
+        # Number of sentences in which a word appears
+        count_doc_per_words = self._create_documents_per_words(frequency_matrix)
+
+        # log_e(Total number of documents / Number of documents with term t in it)
+        idf_matrix = self._create_idf_matrix(frequency_matrix, count_doc_per_words, len(sentences))
+
+        # TF-IDF algorithm is made of 2 algorithms multiplied together.
+        tf_idf_matrix = self._create_tf_idf_matrix(tf_matrix, idf_matrix)
+
+        # Score a sentence by its word's TF
+        sentence_scores = self._score_sentences(tf_idf_matrix)
+
+        # Find the average score from the sentence value dictionary
+        threshold = self._find_average_score(sentence_scores)
+
+        # determine the threshold to include exactly num_sentences in the summary
+        summary = self._generate_summary(sentences, sentence_scores, threshold)
+        summary_sentences = summary.split(".")
+        summary_sentences = [sentence for sentence in summary_sentences if len(sentence) > 1]
+        while len(summary_sentences) > num_sentences:
+            threshold += 0.1
+            summary = self._generate_summary(sentences, sentence_scores, threshold)
+            summary_sentences = summary.split(".")
+            summary_sentences = [sentence for sentence in summary_sentences if len(sentence) > 1]
+
+        while len(summary_sentences) < num_sentences:
+            threshold -= 0.05
+            summary = self._generate_summary(sentences, sentence_scores, threshold)
+            summary_sentences = summary.split(".")
+            summary_sentences = [sentence for sentence in summary_sentences if len(sentence) > 1]
+
+        summary = ""
+        for sentence in summary_sentences: summary += sentence + "."
+        return summary
 
     def _create_frequency_matrix(self, sentences: list[str]) -> dict[str, dict[str, int]]:
         """
@@ -24,7 +75,8 @@ class TF_IDFSummarizator:
         for sent in sentences:
             freq_table = {}
 
-            words = self._preprocessor.preprocess_text(sent)
+            preprocessed_sent = self._preprocessor.preprocess_text(sent)
+            words = word_tokenize(preprocessed_sent)
 
             for word in words:
                 if word in freq_table:
@@ -38,7 +90,8 @@ class TF_IDFSummarizator:
 
     @staticmethod
     def _create_tf_matrix(freq_matrix) -> dict[str, dict[str, float]]:
-        """TF(t) = (Number of times term t appears in a document) / (Total number of terms in the document)"""
+        """Calculates TF(t) = (Number of times term t appears in a document) /
+        / (Total number of terms in the document)"""
         tf_matrix = {}
 
         for sent, f_table in freq_matrix.items():
@@ -67,8 +120,8 @@ class TF_IDFSummarizator:
         return word_per_doc_table
 
     @staticmethod
-    def _create_idf_matrix(freq_matrix, count_doc_per_words, total_documents):
-        """IDF(t) = log_e(Total number of documents / Number of documents with term t in it)"""
+    def _create_idf_matrix(freq_matrix, count_doc_per_words, total_documents) -> dict[str, dict[str, float]]:
+        """Calculates IDF(t) = log_e(Total number of documents / Number of documents with term t in it)"""
 
         idf_matrix = {}
 
@@ -83,7 +136,7 @@ class TF_IDFSummarizator:
         return idf_matrix
 
     @staticmethod
-    def _create_tf_idf_matrix(tf_matrix, idf_matrix):
+    def _create_tf_idf_matrix(tf_matrix, idf_matrix) -> dict[str, dict[str, float]]:
         """TF-IDF algorithm is made of 2 algorithms multiplied together.
 
         In simple terms, we are multiplying the values from both the matrix and generating new matrix.
@@ -118,7 +171,8 @@ class TF_IDFSummarizator:
             for word, score in f_table.items():
                 total_score_per_sentence += score
 
-            sentenceValue[sent] = total_score_per_sentence / count_words_in_sentence
+            if count_words_in_sentence != 0:
+                sentenceValue[sent] = total_score_per_sentence / count_words_in_sentence
 
         return sentenceValue
 
@@ -139,13 +193,20 @@ class TF_IDFSummarizator:
         return average
 
     @staticmethod
-    def _generate_summary(sentences, sentenceValue, threshold):
+    def _generate_summary(sentences, sentence_value, threshold: float) -> str:
+        """
+        Selects a sentence for a summarization if the sentence score is more than the average score
+
+        :param sentences: The sentences to summarize
+        :param sentence_value: The values of the sentences
+        :param threshold: (float) The threshold to use for the sentence value to be included in the summary
+        """
         sentence_count = 0
         summary = ''
 
         for sentence in sentences:
-            if sentence[:15] in sentenceValue and sentenceValue[sentence[:15]] >= (threshold):
-                summary += " " + sentence
+            if sentence[:15] in sentence_value and sentence_value[sentence[:15]] >= threshold:
+                summary += "." + sentence
                 sentence_count += 1
 
-        return summary 
+        return summary

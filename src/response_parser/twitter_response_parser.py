@@ -7,6 +7,5 @@ class TwitterResponseParser(ResponseParser):
 
     @staticmethod
     def parse(response) -> dict:
-        response_json = response.json()
-        data = [tweet["text"] for tweet in response_json["data"]]
+        data = [tweet["text"] for tweet in response["data"]]
         return {"data": data}

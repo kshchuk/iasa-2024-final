@@ -12,7 +12,10 @@ class NTLKPreprocessor:
 
     def preprocess_text(self, text: str) -> str:
         """ Preprocess a text by tokenizing, removing stop words, and lemmatizing the tokens"""
-        tokens = word_tokenize(text.lower())
+        tokenizer = nltk.RegexpTokenizer(r"\w+")
+        tokens = tokenizer.tokenize(text.lower())
+
+        # tokens = word_tokenize(text.lower())
         filtered_tokens = [token for token in tokens if token not in self._stop_words]
 
         lemmatized_tokens = [self._lemmatizer.lemmatize(token) for token in filtered_tokens]

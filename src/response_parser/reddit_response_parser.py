@@ -6,10 +6,9 @@ class RedditResponseParser(ResponseParser):
         super().__init__()
 
     @staticmethod
-    def parse(response) -> dict:
-        response_json = response.json()
-        data = [response_json['post']['content']]
-        for comment in response_json["comments"]:
+    def parse(response: dict) -> dict:
+        data = [response['post']['content']]
+        for comment in response["comments"]:
             data.append(comment["content"])
 
         return {"data": data}
