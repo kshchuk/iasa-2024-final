@@ -1,0 +1,160 @@
+{
+  "post": {
+    "title": "With Brexit, how does future of quant industry in London look?",
+    "content": "Markets/Market Data\nI have a few friends working in Quantitative finance (researcher, dev and trader) who are looking to move to the US because of TC being lower in the UK. I remember seeing a few posts last year which has said France, Germany & Switzerland are gradually sucking away at London’s finance sector.\n\nGiven UK becoming a smaller market, is it likely that the gov may want to regulate finance industry to reduce systemic risk to its economy .\n\nHow do you think UKs quant industry will look like in 10 years time?"
+  },
+  "comments": [
+    {
+      "user": "__Yarik__",
+      "content": ""
+    },
+    {
+      "user": "needmoredram",
+      "content": "Just fine? Retail banking shifting away was bound to happen because of continental requirements.\n\nEnglish speaking European country with deep history in financial services will always be a talent destination. Netherlands is growing. But at the end of the day it’s not London.\n\nAlso tax haven. Even more so now post-Brexit\n"
+    },
+    {
+      "user": "PaneSborraSalsiccia",
+      "content": "HFT\nI don’t understand the tax haven part. What are the advantages?"
+    },
+    {
+      "user": "w1kk",
+      "content": "No need to play by all the EU rules"
+    },
+    {
+      "user": "PaneSborraSalsiccia",
+      "content": "HFT\nThis doesn’t mean anything, what are these rules?"
+    },
+    {
+      "user": "Tiny-Recession",
+      "content": "Company transparency and tax optimization for instance. Depending on your setup, you might be able to optimize wrt taxation AND originate onshore. No need to go to the BVI/Isle of Man anymore."
+    },
+    {
+      "user": "PaneSborraSalsiccia",
+      "content": "HFT\nNice thank you"
+    },
+    {
+      "user": "CurrentMiserable4491",
+      "content": "Interesting take, but may I ask why Ireland isn’t an alternative?\n\nIt has lower taxes, and access to EU. It also has easy access to London, Oxford & Cambridge. It too is English speaking.\n\nFrom the way I see, London Stock Exchange has antiquated listing rules. The FTSE500 is basically a list of ancient old companies from colonial era.\n\nEssentially, my next question is how important is EU markets for the Quant industry? Is it just agglomeration effect that keeps London in the lead?"
+    },
+    {
+      "user": "EvilGeniusPanda",
+      "content": "People want to live in London a lot more than they do in Dublin."
+    },
+    {
+      "user": "JonLivingston70",
+      "content": "Plus the weather in Ireland is terrible. London is London."
+    },
+    {
+      "user": "french_violist",
+      "content": "Weather is London is not great either."
+    },
+    {
+      "user": "AKdemy",
+      "content": "I spent 7 years in London.It's actually quite pleasent.\n\nThat it's very rainy and foggy is a myth. According to the UK’s Met Office, London sees an average of 23.8 inches of rain per year. Paris has an average of 23.6 inches of rain per year, and Amsterdam, which an average of 27.5 inches of rain per year.\n\nThe fog myth dates back to when the city was very polluted. London has amazing pubs and nice places for food and markets. Although I lived in the center, it never feels like a concrete jungle like New York and you hardly realize its a huge and busy city.\n\nThe parks are really nice and you have access to some of the best museums and art galleries.\n\nOf course, not everything is great, but most people really don't complain and some simply love it and wouldn't want to move elsewhere."
+    },
+    {
+      "user": "french_violist",
+      "content": "It’s not all about rain. Cloud cover is a thing."
+    },
+    {
+      "user": "AKdemy",
+      "content": "True."
+    },
+    {
+      "user": "needmoredram",
+      "content": "London sunny hours per year 1633 Dublin 1453 Amsterdam 1662"
+    },
+    {
+      "user": "french_violist",
+      "content": "You know at some point some HF were nearshoring in Malaga… now, if they could move some quants there too that would be nice."
+    },
+    {
+      "user": "jessybarden",
+      "content": "I work in Dublin and I can confirm"
+    },
+    {
+      "user": "young_twitcher",
+      "content": "People want to live in London? Everyone I know who has lived there says it’s terrible."
+    },
+    {
+      "user": "Trick_Hovercraft3466",
+      "content": "Completely agree with this opinion. I live here and it's dogshit compared to other cities I've lived in for longer than a month, specially Amsterdam. Why would anyone want to live in London over Amsterdam? If I had a job offer between Amsterdam and London, I'd be happy earning up to 25% less if I didn't have to live in London."
+    },
+    {
+      "user": "jbravo43181",
+      "content": "I think it really depends on what you’re looking for. Having lived in both cities for several years, I was bored to death in Amsterdam and missed London a lot (still do). There is infinitely more things to do in London than in Amsterdam. Not saying Amsterdam is not nice, it’s a great city."
+    },
+    {
+      "user": "Ok-Selection2828",
+      "content": "It might be an alternative… hard to predict the future tho\n\nThere are some important buy-side companies with offices in Ireland like HRT, SIG, and Virtu (I believe Citadel also has an office there but I might be wrong)\n\nIt would be nice to see London getting decentralized a little and seeing Ireland’s finance scene grow… but I think it’s easier that companies will prefer to move to places with already stablished finance scene like Amsterdam (I believe amsterdam is the strongest place for quant in Europe after London, if anyone disagrees please share your thoughts)"
+    },
+    {
+      "user": "SolJudasCampbell",
+      "content": "Ireland also has taxes like the USC which will tax a big lump (upto 8%) which people from other countries look over a lot or just miss. Dublin is also very very expensive, bigger housing crisis than the UK and its pretty much live in Dublin or live rural."
+    },
+    {
+      "user": "needmoredram",
+      "content": "Because. There’s nothing to do or spend your money on in Ireland. It’s where you register your fancy car. Not where you drive it."
+    },
+    {
+      "user": "mintz41",
+      "content": "You definitely do not want to be registering cars in Ireland, the taxes are ridiculous"
+    },
+    {
+      "user": "needmoredram",
+      "content": "Sorry. It was a metaphor for companies registering there but don’t run their businesses there though."
+    },
+    {
+      "user": "blackswanlover",
+      "content": "I don't think Europe will suck London. The fact that London is a financial hub has a lot more to do with the legal framework of the UK (common law, which is more beneficial for conflict resolution in our industry) and cannot be influenced by anything the EU offers."
+    },
+    {
+      "user": "qt_mfeq",
+      "content": "The Quant world is heavily populated by French people in London, and there has been recently a lot of people moving back to Paris as a result of Brexit (Citadel has an office there now, Millennium and Cubist are also growing fast there). + Squarepoint, CFM and QRT having their main offices there and are all +10bn AUM now. I’m expecting the Quant scene to be smaller in 10yrs from now in London as a result."
+    },
+    {
+      "user": "CurrentMiserable4491",
+      "content": "Substantially smaller or marginally smaller?\n\nWhat are your thoughts about government intervention to regulate the industry?\n\nI was hearing a political podcast which said the 80s neoliberal mindset is coming to an end and with Labour increasingly looking to get into power do you feel regulation is a threat to the industry?"
+    },
+    {
+      "user": "tommy64600",
+      "content": "Quant industry is already extremely regulated. Labour in power won’t change anything."
+    },
+    {
+      "user": "qt_mfeq",
+      "content": "I’m a Quant PM in London atm - and it’s really hard to access the French talent pool (that’s the main one in Europe for quants) compared to 3/4 years ago. I suppose same will happen with people starting in Amsterdam instead of London. It will take a few years but I don’t feel particularly hopeful for London in the Quant space. The only point for London is its international trait, and it also used to be a free market paradise. Now there is Dubai that compete for this sort of thing. I think Brexit definitely won’t make London disappear but for the Quant space in particular, the talent pool provided by the UK alone is simply not good enough for this competitive game. It will be marginally smaller but imo it will become a simple office location as opposed to the home of central operations as it used to be. Shame they voted to leave and we all have to pay the bill now. Full disclosure: I love London as a city, and I’m not going anywhere."
+    },
+    {
+      "user": "DiligentPoetry_",
+      "content": "Isn’t sponsoring international talent a big thing in the UK? I’ve seen people get visas for way easier roles than those in the quant industry."
+    },
+    {
+      "user": "qt_mfeq",
+      "content": "Fair point - but the limiting factor here is more graduates not willing to expatriate anymore with all the job offers now available in their country."
+    },
+    {
+      "user": "tommy64600",
+      "content": "Quant landscape is becoming increasingly smaller in London but will not tend to nil.\n\nKeep in mind that most MDs in London have established lives and families. With kids in school, it would be challenging to move their entire family across the channel. As a result, MDs make sure that London is retaining some staff and Importance.\n\nBesides the largest hedge funds setting up offices in Paris, there are historically more hedge funds / asset managers / investment boutiques in London and they are retaining the quants"
+    },
+    {
+      "user": "Stat-Arbitrage",
+      "content": "London is London. Frankfurt is one of the dullest cities on the planet and if you don’t speak German you’re f’d long term. Same goes with Paris in terms of language requirements except the entertainment is better."
+    },
+    {
+      "user": "Professional-Pea-216",
+      "content": "Was crazy to hear the difference between DRW LDN vs DRW CHI"
+    },
+    {
+      "user": "transcen",
+      "content": "?"
+    },
+    {
+      "user": "Professional-Pea-216",
+      "content": "DRW LDN QTA is < 200K GBP, DRW Chi was 375+ for a friend. Like 125K difference and I believe London is a higher CoL city than Chicago."
+    },
+    {
+      "user": "needmoredram",
+      "content": "Stateside pays higher raw dollars, but getting a visa to work there for non-Americans is a long process so not usually an option for folks outside of the US."
+    }
+  ]
+}
