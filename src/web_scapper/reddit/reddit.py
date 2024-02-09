@@ -23,6 +23,9 @@ class RedditReader:
         )
         return self
 
+    def collect_recommended(self, keywords: List[str], period: str):
+        return self.collect_data(keywords, period)
+
     def collect_data(self, keywords: List[str], period: str, post_limit=10, comment_limit=10) -> List[Article]:
         all_subreddits = self.reddit.subreddit("all")
         search_tag = ", ".join(keywords)
