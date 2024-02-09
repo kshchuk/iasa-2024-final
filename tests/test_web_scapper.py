@@ -1,4 +1,4 @@
-from web_scapper.url_builder import RedditSearch
+from src.web_scapper.url_builder import RedditSearch
 
 
 def test_reddit_url_builder():
