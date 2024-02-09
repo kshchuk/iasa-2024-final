@@ -20,7 +20,7 @@ class YouTubeReader:
     def collect_recommended(self, keywords: List[str], period: str):
         return self.collect_data(keywords, period)
 
-    def collect_data(self, keywords: List[str], period: str, post_limit=5, comment_limit=10) -> List[Article]:
+    def collect_data(self, keywords: List[str], period: str, post_limit=10, comment_limit=15) -> List[Article]:
         posts = []
         if post_limit < 1:
             return posts
