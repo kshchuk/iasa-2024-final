@@ -18,7 +18,10 @@ class WebScrapper:
     def collect_data(self, keywords: List[str], services: List[str], period: str) -> [ArticleCollection]:
         collections = []
         for service in services:
-            service = self.service_map[service]
-            article_collection = service.collect_recommended(keywords, period)
-            collections.append(article_collection)
+            try:
+                service = self.service_map[service]
+                article_collection = service.collect_recommended(keywords, period)
+                collections.append(article_collection)
+            except Exception as e:
+                print(f"An error occurred: {e}")
         return collections
