@@ -1,5 +1,4 @@
 import panel as pn
-import datetime as dt
 import ipywidgets as widgets
 import pandas as pd
 
@@ -12,12 +11,12 @@ def scrap_and_analyze(event):
         return
 
     df = pd.DataFrame({
-            "Title": ["Sample Title 1", "Sample Title 2", "Sample Title 3"],
-            "Summary": ["Sample Summary 1", "Sample Summary 2", "Sample Summary 3"],
-            "Sentiment": ["Positive", "Neutral", "Negative"],
-            "Resource": ["Reddit", "Youtube", "CNN"],
-            "Date": ["2024-02-10", "2024-02-09", "2024-02-08"],
-            "Link": ["http://example.com/link1", "http://example.com/link2", "http://example.com/link3"]
+        "Title": ["Sample Title 1", "Sample Title 2", "Sample Title 3"],
+        "Summary": ["Sample Summary 1", "Sample Summary 2", "Sample Summary 3"],
+        "Sentiment": ["-1", "0", "1"],
+        "Resource": ["Reddit", "Youtube", "CNN"],
+        "Date": ["2024-02-10", "2024-02-09", "2024-02-08"],
+        "Link": ["http://example.com/link1", "http://example.com/link2", "http://example.com/link3"]
     }, index=[1, 2, 3])
 
     table.value = df
@@ -58,6 +57,10 @@ options_box = OptionsBox()
 options_box.set_on_analyze_btn_pressed(scrap_and_analyze)
 user_input = options_box.options_row
 
+tabulator_formatters = {
+    'Sentiment': {'type': 'traffic', 'min': -1, 'max': 1, 'color': ["red", "orange", "green"]},
+    'Link': {'type': 'link'},
+}
 table = pn.widgets.Tabulator(
     pd.DataFrame(),
     layout='fit_columns',
@@ -65,7 +68,8 @@ table = pn.widgets.Tabulator(
     text_align='center',
     selectable=False,
     disabled=True,
-    visible=False
+    visible=False,
+    formatters=tabulator_formatters
 )
 
 main_page = pn.Column(
