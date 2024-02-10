@@ -1,5 +1,6 @@
 import panel as pn
 import ipywidgets as widgets
+import pandas as pd
 
 pn.extension("ipywidgets", sizing_mode="stretch_width")
 
@@ -41,10 +42,23 @@ class OptionsBox:
 options_box = OptionsBox()
 user_input = options_box.options_row
 
+table = pn.widgets.Tabulator(
+    pd.DataFrame(),
+    layout='fit_columns',
+    header_align='center',
+    text_align='center',
+    visible=False
+)
+
+main_page = pn.Column(
+    user_input,
+    table,
+)
+
 template = pn.template.FastListTemplate(
     title="Web Scraping App",
     # logo="",
     header_background="#FFA500",
     accent_base_color="#00A170",
-    main=[options_box.options_row],
+    main=[main_page],
 ).servable()
