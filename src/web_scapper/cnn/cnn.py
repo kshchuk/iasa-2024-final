@@ -7,7 +7,7 @@ from web_scapper.search.post import Article
 from web_scapper.search.post import ArticleCollection
 from web_scapper.url_builder import CNNSearch
 from web_scapper.search.common_search import SearchEngine
-from datetime import datetime
+from datetime import datetime, timedelta
 
 
 class CNNReader(SearchEngine):
@@ -30,12 +30,17 @@ class CNNReader(SearchEngine):
     def collect_data(self, keywords: List[str], period: str, post_limit=5, comment_limit=0) -> ArticleCollection:
         search_url = self._build_search_url(keywords, post_limit)
         articles = self.collect_links(search_url)
-        return self._read_articles(articles)
+        return self._read_articles(articles, period)
 
-    def _read_articles(self, articles_links):
+    def _read_articles(self, articles_links, period):
         posts = ArticleCollection('CNN')
+        period_days = SearchEngine.period_to_days(period)
         for link in articles_links:
-            posts.add(self._collect_page_content(link))
+            article = self._collect_page_content(link)
+            if article.date:
+                if datetime.now() - timedelta(days=period_days) > article.date:
+                    continue
+                posts.add(article)
         return posts
 
     def _build_search_url(self, keywords, post_limit):
