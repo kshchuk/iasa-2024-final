@@ -36,7 +36,7 @@ class OptionsBox:
                                       allowed_tags=[], allow_duplicates=False,
                                       layout=widgets.Layout(width='85%'))
         self.services = pn.widgets.CheckButtonGroup(name='Services', button_type='primary',
-                                                    button_style='outline', options=['Reddit', 'CNN', 'DOU'],
+                                                    button_style='outline', options=['Reddit', 'CNN', 'YouTube'],
                                                     value=['CNN'], orientation='horizontal', width=300,
                                                     height=common_height)
         self.timeperiod = pn.widgets.Select(options=['Day', 'Week', 'Month'], width=100, height=common_height)
@@ -76,6 +76,7 @@ table = pn.widgets.Tabulator(
     layout='fit_columns',
     header_align='center',
     text_align='center',
+    theme='bootstrap4',
     selectable=False,
     disabled=True,
     visible=False,
@@ -91,6 +92,6 @@ template = pn.template.FastListTemplate(
     title="Web Scraping App",
     # logo="",
     header_background="#FFA500",
-    accent_base_color="#00A170",
+    accent_base_color="#FF6A00",
     main=[main_page],
 ).servable()
