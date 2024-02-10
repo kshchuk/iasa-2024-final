@@ -1,7 +1,7 @@
 from web_scapper.web_scrapper import WebScrapper
 
 
-def test_web_scrapper():
+def test_web_scraper():
     web_scrapper = WebScrapper().build()
     article_collections = web_scrapper.collect_data(keywords=["Trump", "Biden"],
                                                     services=["Reddit", "CNN"], period="month")
