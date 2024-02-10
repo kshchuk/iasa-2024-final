@@ -53,8 +53,8 @@ class CNNReader(SearchEngine):
     def _process_article_content(self, soup, link):
         title_elem = soup.find('h1')
         title = self._to_plain_text(title_elem)
-        h2s = self._to_plain_text_each(soup.find_all('main h2'))
-        ps = self._to_plain_text_each(soup.find_all('main p'))
+        h2s = self._to_plain_text_each(soup.select('article h2'))
+        ps = self._to_plain_text_each(soup.select('article p'))
         content = " ".join(h2s + ps)
         date_obj = self._extract_date(soup)
         return Article(title=title, content=content, date_t=date_obj, link=link)
