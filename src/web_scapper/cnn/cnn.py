@@ -65,6 +65,10 @@ class CNNReader(SearchEngine):
         if date_str:
             return datetime.fromisoformat(date_str.rstrip('Z'))
         else:
+            meta_tag = soup.find('meta', attrs={'property': 'article:published_time '})
+            date_str = meta_tag['content'] if meta_tag else None
+            if date_str:
+                return datetime.fromisoformat(date_str.rstrip('Z'))
             return None
 
     def _to_plain_text(self, tag):
