@@ -6,6 +6,10 @@
 
 Inside of the repository directory run the following commands:
 ```shell
+export REDDIT_CLIENT_KEY=<REDDIT_CLIENT_KEY>
+export REDDIT_CLIENT_SECRET=<REDDIT_CLIENT_SECRET>
+export YOUTUBE_API_KEY=<YOUTUBE_API_KEY>
+
 docker build --tag social-network-analyzer .
 docker-compose up --build
 ```

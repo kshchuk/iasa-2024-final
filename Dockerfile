@@ -32,6 +32,10 @@ COPY src/ /app
 # Change ownership of the /app directory to the app user
 RUN chown -R app:app /app
 
+ENV REDDIT_CLIENT_KEY=""
+ENV REDDIT_CLIENT_SECRET=""
+ENV YOUTUBE_API_KEY=""
+
 ARG PORT=5006
 ENV PORT ${PORT}
 ARG LIVENESS_ENDPOINT=health
