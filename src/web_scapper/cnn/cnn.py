@@ -11,8 +11,6 @@ from datetime import datetime
 
 
 class CNNReader(SearchEngine):
-    def __init__(self):
-        self.count3 = 0
 
     def build(self):
         return self
@@ -39,9 +37,6 @@ class CNNReader(SearchEngine):
 
         if response.status_code == 200:
             soup = BeautifulSoup(response.text, 'html.parser')
-            self.count3 += 1
-            with open(f'test{self.count3}.html', 'w', encoding='utf-8') as file:
-                file.write(response.text)
             return self._process_article_content(soup, url)
         else:
             raise RuntimeError(f"Failed to retrieve content from {url}, status code: {response.status_code}")
