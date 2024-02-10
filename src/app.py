@@ -26,25 +26,28 @@ def scrap_and_analyze(event):
 class OptionsBox:
     def __init__(self):
         common_width = 150
-        common_height = 200
+        common_height = 40
         self.tags = widgets.TagsInput(value=['Enter keywords here!'],
                                       allowed_tags=[], allow_duplicates=False,
                                       layout=widgets.Layout(width='85%'))
         self.services = pn.widgets.CheckButtonGroup(name='Services', button_type='primary',
                                                     button_style='outline', options=['Reddit', 'Facebook', 'DOU'],
-                                                    value=['Facebook'], orientation='horizontal', width=300)
+                                                    value=['Facebook'], orientation='horizontal', width=300, height=common_height)
+        self.timeperiod = pn.widgets.Select(options=['Day', 'Week', 'Month'], width=100, height=common_height)
         self.submit_btn = pn.widgets.Button(name='Analyze', button_type='warning',
-                                            width=common_width)
+                                            width=common_width, height=common_height)
         self.options_row = pn.Row(
             self.tags,
             self.services,
+            self.timeperiod,
             self.submit_btn
         )
 
     def collect_data(self):
         return {
             'tags': self.tags.value,
-            'services': self.services.value
+            'services': self.services.value,
+            'timeperiod': self.timeperiod.value
         }
 
     def set_on_analyze_btn_pressed(self, runnable):
