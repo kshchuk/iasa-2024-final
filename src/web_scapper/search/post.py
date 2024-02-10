@@ -9,7 +9,7 @@ class Article:
         if date_t:
             self.date = date_t
         else:
-            self.date = date.today()
+            self.date = None
         self.link = link
         if comments:
             self.comments = comments
@@ -21,7 +21,7 @@ class Comment:
     def __init__(self):
         self.content = ""
         self.votes = 0
-        self.date_published = date.today()
+        self.date_published = None
 
 
 class ArticleCollection:

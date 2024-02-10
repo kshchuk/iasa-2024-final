@@ -65,7 +65,7 @@ class CNNReader(SearchEngine):
         if date_str:
             return datetime.fromisoformat(date_str.rstrip('Z'))
         else:
-            return datetime.today()
+            return None
 
     def _to_plain_text(self, tag):
         if tag:
