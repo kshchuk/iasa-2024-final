@@ -1,4 +1,5 @@
 from typing import List
+from uuid import uuid4
 
 
 class RedditSearch:
@@ -39,3 +40,64 @@ class RedditUrlBuilder:
 
     def get(self):
         return self._url
+
+
+class CNNSearch:
+    @staticmethod
+    def search(keywords: List[str], post_limit: int):
+        return (CNNUrlBuilder().search().append_keywords(keywords).and_with().size(post_limit).and_with()
+                .append_pagination().and_with().with_sort('newest').and_with().has_type('article').and_with()
+                .append_request_id().get())
+
+
+class CNNUrlBuilder:
+
+    def __init__(self, base=None):
+        if base:
+            self._url = base
+        else:
+            self._url = 'https://search.prod.di.api.cnn.io'
+
+    def search(self):
+        self._url = self._url + '/content?'
+        return self
+
+    def append_keywords(self, keywords):
+        self._url = self._url + 'q='
+        output_string = "+".join(keywords)
+        self._url = self._url + output_string
+        return self
+
+    def and_with(self):
+        self._url = self._url + '&'
+        return self
+
+    def has_type(self, d_type='article'):
+        self._url = self._url + f'types={d_type}'
+        return self
+
+    def append_request_id(self):
+        self._url = self._url + f'request_id={self._generate_request_id()}'
+        return self
+
+    def append_pagination(self, from_p=0, page_n=1):
+        self._url = self._url + f'from={from_p}&page={page_n}'
+        return self
+
+    def with_sort(self, sorting='newest'):
+        self._url = self._url + f'sort={sorting}'
+        return self
+
+    def size(self, size=10):
+        self._url = self._url + f'size={size}'
+        return self
+
+    def _generate_request_id(self):
+        uuid = uuid4()
+        request_id = f"pdx-search-{uuid}"
+        return request_id
+
+    def get(self):
+        return self._url
+
+# https://search.prod.di.api.cnn.io/content?q=&size=10&from=0&page=1&sort=newest&types=article&request_id=pdx-search-b0d19b6a-46be-4742-8139-515df9eabc39
