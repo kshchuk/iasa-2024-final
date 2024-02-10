@@ -67,6 +67,7 @@ options_box.set_on_analyze_btn_pressed(scrap_and_analyze)
 user_input = options_box.options_row
 
 tabulator_formatters = {
+    'Title': {'type': 'textarea'},
     'Summary': {'type': 'textarea'},
     'Sentiment': {'type': 'traffic', 'min': -1, 'max': 1, 'color': ["red", "orange", "green"]},
     'Link': {'type': 'link'},
@@ -76,7 +77,7 @@ table = pn.widgets.Tabulator(
     layout='fit_columns',
     header_align='center',
     text_align='center',
-    theme='bootstrap4',
+    theme='bootstrap',
     selectable=False,
     disabled=True,
     visible=False,

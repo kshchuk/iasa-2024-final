@@ -3,7 +3,7 @@ from web_scapper.cnn.cnn import CNNReader
 
 def test_cnn_api():
     reader = CNNReader().build()
-    data = reader.collect_data(keywords=["Shrek"], period="year", post_limit=5)
+    data = reader.collect_data(keywords=["Shrek"], period="Year", post_limit=5)
     assert data
     assert len(data.articles) == 5
     assert data.source == 'CNN'
