@@ -16,7 +16,16 @@ class CNNReader(SearchEngine):
         return self
 
     def collect_recommended(self, keywords: List[str], period: str):
-        return self.collect_data(keywords, period, 5, 0)
+        period_to_limit = {
+            "Day": 5,
+            "Week": 10,
+            "Month": 15,
+            "Year": 20
+        }
+        post_limit = 10
+        if period in period_to_limit:
+            post_limit = period_to_limit[period]
+        return self.collect_data(keywords, period, post_limit, 0)
 
     def collect_data(self, keywords: List[str], period: str, post_limit=5, comment_limit=0) -> ArticleCollection:
         search_url = self._build_search_url(keywords, post_limit)
@@ -44,8 +53,8 @@ class CNNReader(SearchEngine):
     def _process_article_content(self, soup, link):
         title_elem = soup.find('h1')
         title = self._to_plain_text(title_elem)
-        h2s = self._to_plain_text_each(soup.find_all('h2'))
-        ps = self._to_plain_text_each(soup.find_all('p'))
+        h2s = self._to_plain_text_each(soup.find_all('main h2'))
+        ps = self._to_plain_text_each(soup.find_all('main p'))
         content = " ".join(h2s + ps)
         date_obj = self._extract_date(soup)
         return Article(title=title, content=content, date_t=date_obj, link=link)

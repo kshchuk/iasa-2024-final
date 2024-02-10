@@ -103,7 +103,7 @@ class CNNUrlBuilder:
         self._url = self._url + f'sort={sorting}'
         return self
 
-    def size(self, size=10):
+    def size(self, size=20):
         self._url = self._url + f'size={size}'
         return self
 
