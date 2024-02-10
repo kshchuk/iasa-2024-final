@@ -7,7 +7,8 @@ from environment.env_variables import Environment
 from web_scapper.search.common_search import SearchEngine
 from googleapiclient.errors import HttpError
 
-class YouTubeReader:
+
+class YouTubeReader(SearchEngine):
 
     def __init__(self):
         self.youtube = None

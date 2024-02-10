@@ -1,5 +1,6 @@
 from typing import List
 from uuid import uuid4
+import re
 
 
 class RedditSearch:
@@ -64,9 +65,23 @@ class CNNUrlBuilder:
 
     def append_keywords(self, keywords):
         self._url = self._url + 'q='
+        keywords = self._format_words(keywords)
         output_string = "+".join(keywords)
         self._url = self._url + output_string
         return self
+
+    def _format_words(self, keywords):
+        actual = []
+        for word in keywords:
+            word = self._modify_word(word)
+            actual.append(word)
+        return actual
+
+    def _modify_word(self, word):
+        word = re.sub(r'\s+', ' ', word)
+        word = word.strip()
+        word = word.replace(' ', '+')
+        return word
 
     def and_with(self):
         self._url = self._url + '&'

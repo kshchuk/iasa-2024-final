@@ -3,9 +3,10 @@ import environment.env_variables as env
 from typing import List
 from web_scapper.search.post import Article
 from web_scapper.search.post import Comment
+from web_scapper.search.common_search import SearchEngine
 
 
-class RedditReader:
+class RedditReader(SearchEngine):
 
     def __init__(self):
         self.reddit = None

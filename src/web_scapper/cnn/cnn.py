@@ -5,9 +5,10 @@ import json
 from typing import List
 from web_scapper.search.post import Article
 from web_scapper.url_builder import CNNSearch
+from web_scapper.search.common_search import SearchEngine
 
 
-class CNNReader:
+class CNNReader(SearchEngine):
 
     def build(self):
         return self
@@ -75,5 +76,3 @@ class CNNReader:
             raise ValueError("'result' is missing or is not a list")
 
         return links
-
-
