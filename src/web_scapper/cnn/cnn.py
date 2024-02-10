@@ -4,11 +4,15 @@ import json
 
 from typing import List
 from web_scapper.search.post import Article
+from web_scapper.search.post import ArticleCollection
 from web_scapper.url_builder import CNNSearch
 from web_scapper.search.common_search import SearchEngine
+from datetime import datetime
 
 
 class CNNReader(SearchEngine):
+    def __init__(self):
+        self.count3 = 0
 
     def build(self):
         return self
@@ -16,15 +20,15 @@ class CNNReader(SearchEngine):
     def collect_recommended(self, keywords: List[str], period: str):
         return self.collect_data(keywords, period, 5, 0)
 
-    def collect_data(self, keywords: List[str], period: str, post_limit=5, comment_limit=0) -> List[Article]:
+    def collect_data(self, keywords: List[str], period: str, post_limit=5, comment_limit=0) -> ArticleCollection:
         search_url = self._build_search_url(keywords, post_limit)
         articles = self.collect_links(search_url)
         return self._read_articles(articles)
 
     def _read_articles(self, articles_links):
-        posts = []
+        posts = ArticleCollection('CNN')
         for link in articles_links:
-            posts.append(self._collect_page_content(link))
+            posts.add(self._collect_page_content(link))
         return posts
 
     def _build_search_url(self, keywords, post_limit):
@@ -35,17 +39,29 @@ class CNNReader(SearchEngine):
 
         if response.status_code == 200:
             soup = BeautifulSoup(response.text, 'html.parser')
-            return self._process_article_content(soup)
+            self.count3 += 1
+            with open(f'test{self.count3}.html', 'w', encoding='utf-8') as file:
+                file.write(response.text)
+            return self._process_article_content(soup, url)
         else:
             raise RuntimeError(f"Failed to retrieve content from {url}, status code: {response.status_code}")
 
-    def _process_article_content(self, soup):
+    def _process_article_content(self, soup, link):
         title_elem = soup.find('h1')
         title = self._to_plain_text(title_elem)
         h2s = self._to_plain_text_each(soup.find_all('h2'))
         ps = self._to_plain_text_each(soup.find_all('p'))
         content = " ".join(h2s + ps)
-        return Article(title=title, content=content)
+        date_obj = self._extract_date(soup)
+        return Article(title=title, content=content, date_t=date_obj, link=link)
+
+    def _extract_date(self, soup):
+        meta_tag = soup.find('meta', attrs={'name': 'pubdate'})
+        date_str = meta_tag['content'] if meta_tag else None
+        if date_str:
+            return datetime.fromisoformat(date_str.rstrip('Z'))
+        else:
+            return datetime.today()
 
     def _to_plain_text(self, tag):
         if tag:

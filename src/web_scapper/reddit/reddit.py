@@ -2,8 +2,10 @@ import praw.models
 import environment.env_variables as env
 from typing import List
 from web_scapper.search.post import Article
+from web_scapper.search.post import ArticleCollection
 from web_scapper.search.post import Comment
 from web_scapper.search.common_search import SearchEngine
+from datetime import datetime
 
 
 class RedditReader(SearchEngine):
@@ -27,20 +29,23 @@ class RedditReader(SearchEngine):
     def collect_recommended(self, keywords: List[str], period: str):
         return self.collect_data(keywords, period)
 
-    def collect_data(self, keywords: List[str], period: str, post_limit=10, comment_limit=10) -> List[Article]:
+    def collect_data(self, keywords: List[str], period: str, post_limit=10, comment_limit=10) -> ArticleCollection:
         all_subreddits = self.reddit.subreddit("all")
         search_tag = ", ".join(keywords)
 
-        posts = []
+        posts = ArticleCollection(source='Reddit')
         if post_limit < 1:
             return posts
         for submission in all_subreddits.search(search_tag, limit=post_limit, time_filter=period):
             title = submission.title
             score = submission.score
             text = submission.selftext
-            post = Article(title=title, content=text, votes=score)
+            created_time = submission.created
+            date_obj = datetime.fromtimestamp(created_time)
+            link = submission.permalink
+            post = Article(title=title, content=text, votes=score, link=link, date_t=date_obj)
             submission.comments.replace_more(limit=0)
-            posts.append(post)
+            posts.add(post)
             comments = []
             post.comments = comments
             if comment_limit < 1:
