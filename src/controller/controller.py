@@ -51,7 +51,8 @@ class Controller:
                 titles.append(article.title)
                 summaries.append(summary)
                 sentiments.append(
-                    "1" if sentiment is SentimentType.POSITIVE else "-1" if sentiment is SentimentType.NEGATIVE else "0")
+                    "1" if sentiment is SentimentType.POSITIVE
+                    else "-1" if sentiment is SentimentType.NEGATIVE else "0")
                 resources.append(source.source)
                 dates.append(article.date)
                 links.append(article.link)
@@ -68,6 +69,9 @@ class Controller:
         return self._current_dataframe
 
     def get_statistics(self):
-        return self._current_dataframe.describe()
+        if self._current_dataframe is None:
+            return "No data to analyze"
+
+        # create trand 
 
 controller = Controller()

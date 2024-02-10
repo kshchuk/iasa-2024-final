@@ -5,6 +5,8 @@ from nltk.corpus import stopwords
 
 from nlp.ntlk.preprocessor import NTLKPreprocessor
 
+threshold_coeff = 1.6
+
 
 class TF_IDFSummarizator:
     """Summarize a text using the TF-IDF algorithm"""
@@ -41,23 +43,27 @@ class TF_IDFSummarizator:
         sentence_scores = self._score_sentences(tf_idf_matrix)
 
         # Find the average score from the sentence value dictionary
-        threshold = self._find_average_score(sentence_scores)
+        threshold = self._find_average_score(sentence_scores) * threshold_coeff
 
         # determine the threshold to include exactly num_sentences in the summary
         summary = self._generate_summary(sentences, sentence_scores, threshold)
         summary_sentences = summary.split(".")
         summary_sentences = [sentence for sentence in summary_sentences if len(sentence) > 1]
-        while len(summary_sentences) > num_sentences:
-            threshold += 0.1
-            summary = self._generate_summary(sentences, sentence_scores, threshold)
-            summary_sentences = summary.split(".")
-            summary_sentences = [sentence for sentence in summary_sentences if len(sentence) > 1]
+#        while len(summary_sentences) > num_sentences:
+#            threshold += 0.1
+#            summary = self._generate_summary(sentences, sentence_scores, threshold)
+#            summary_sentences = summary.split(".")
+#            summary_sentences = [sentence for sentence in summary_sentences if len(sentence) > 1]
 
-        while len(summary_sentences) < num_sentences:
-            threshold -= 0.05
-            summary = self._generate_summary(sentences, sentence_scores, threshold)
-            summary_sentences = summary.split(".")
-            summary_sentences = [sentence for sentence in summary_sentences if len(sentence) > 1]
+#        while len(summary_sentences) < num_sentences:
+#            threshold -= 0.05
+#            summary = self._generate_summary(sentences, sentence_scores, threshold)
+#            summary_sentences = summary.split(".")
+#            summary_sentences = [sentence for sentence in summary_sentences if len(sentence) > 1]
+
+        print(f"Summary length: {len(summary_sentences)}")
+        #if len(summary_sentences) > num_sentences:
+        #    summary_sentences = summary_sentences[:num_sentences]
 
         summary = ""
         for sentence in summary_sentences: summary += sentence + "."
@@ -183,6 +189,10 @@ class TF_IDFSummarizator:
 
         :rtype: float
         """
+
+#        if len(sentenceValue) == 0:
+#            return 0
+
         sumValues = 0
         for entry in sentenceValue:
             sumValues += sentenceValue[entry]
