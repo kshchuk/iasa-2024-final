@@ -2,7 +2,7 @@ import panel as pn
 import ipywidgets as widgets
 import pandas as pd
 
-from controller.controller import Controller
+from controller.controller import controller
 
 pn.extension("ipywidgets", sizing_mode="stretch_width")
 pn.extension("tabulator")
@@ -20,8 +20,10 @@ def scrap_and_analyze(event):
     #     "Date": ["2024-02-10", "2024-02-09", "2024-02-08"],
     #     "Link": ["http://example.com/link1", "http://example.com/link2", "http://example.com/link3"]
     # }, index=[1, 2, 3])
+    collection_data = options_box.collect_data()
+    table.value = controller.analyze_event(collection_data)
 
-    controller.analyze_event()
+    print(controller.get_statistics())
 
     table.visible = True
 
@@ -34,8 +36,9 @@ class OptionsBox:
                                       allowed_tags=[], allow_duplicates=False,
                                       layout=widgets.Layout(width='85%'))
         self.services = pn.widgets.CheckButtonGroup(name='Services', button_type='primary',
-                                                    button_style='outline', options=['Reddit', 'Facebook', 'DOU'],
-                                                    value=['Facebook'], orientation='horizontal', width=300, height=common_height)
+                                                    button_style='outline', options=['Reddit', 'CNN', 'DOU'],
+                                                    value=['CNN'], orientation='horizontal', width=300,
+                                                    height=common_height)
         self.timeperiod = pn.widgets.Select(options=['Day', 'Week', 'Month'], width=100, height=common_height)
         self.submit_btn = pn.widgets.Button(name='Analyze', button_type='warning',
                                             width=common_width, height=common_height)
@@ -90,6 +93,6 @@ template = pn.template.FastListTemplate(
     header_background="#FFA500",
     accent_base_color="#00A170",
     main=[main_page],
-).servable()
+)
 
-controller = Controller()
+pn.serve(template)
