@@ -18,10 +18,10 @@ class SearchEngine(ABC):
     @staticmethod
     def period_to_days(period: str):
         d_map = {
-            'day': 1,
-            'week': 7,
-            'month': 31,
-            'year': 365
+            'Day': 1,
+            'Week': 7,
+            'Month': 31,
+            'Year': 365
         }
         if period in d_map:
             return d_map[period]
