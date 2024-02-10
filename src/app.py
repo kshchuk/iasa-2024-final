@@ -93,6 +93,4 @@ template = pn.template.FastListTemplate(
     header_background="#FFA500",
     accent_base_color="#00A170",
     main=[main_page],
-)
-
-pn.serve(template)
+).servable()
