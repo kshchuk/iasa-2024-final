@@ -69,9 +69,10 @@ class YouTubeReader(SearchEngine):
                 for comment in comments_response['items']:
                     top_comment = comment['snippet']['topLevelComment']
                     comment_text = top_comment['snippet']['textDisplay']
+                    comment_date = top_comment['snippet']['publishedAt']
                     comment_likes = top_comment['snippet'].get('likeCount', 0)
-
                     comment = Comment()
+                    comment.date_published = self._to_datetime(comment_date)
                     comment.content = comment_text
                     comment.votes = comment_likes
                     comments.append(comment)

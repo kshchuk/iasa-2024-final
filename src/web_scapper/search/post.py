@@ -21,6 +21,7 @@ class Comment:
     def __init__(self):
         self.content = ""
         self.votes = 0
+        self.date_published = date.today()
 
 
 class ArticleCollection:

@@ -47,13 +47,14 @@ class RedditReader(SearchEngine):
             submission.comments.replace_more(limit=0)
             posts.add(post)
             comments = []
-            post.comments = comments
             if comment_limit < 1:
                 continue
             for comment in submission.comments.list()[:comment_limit]:
                 new_comment = Comment()
                 new_comment.content = comment.body
                 new_comment.votes = comment.score
-                comments.append(comment)
+                new_comment.date_published = datetime.fromtimestamp(comment.created_utc)
+                comments.append(new_comment)
+            post.comments = comments
 
         return posts
