@@ -2,6 +2,8 @@ import panel as pn
 import ipywidgets as widgets
 import pandas as pd
 
+from controller.controller import Controller
+
 pn.extension("ipywidgets", sizing_mode="stretch_width")
 pn.extension("tabulator")
 
@@ -10,16 +12,17 @@ def scrap_and_analyze(event):
     if not event:
         return
 
-    df = pd.DataFrame({
-        "Title": ["Sample Title 1", "Sample Title 2", "Sample Title 3"],
-        "Summary": ["Sample Summary 1", "Sample Summary 2", "Sample Summary 3"],
-        "Sentiment": ["-1", "0", "1"],
-        "Resource": ["Reddit", "Youtube", "CNN"],
-        "Date": ["2024-02-10", "2024-02-09", "2024-02-08"],
-        "Link": ["http://example.com/link1", "http://example.com/link2", "http://example.com/link3"]
-    }, index=[1, 2, 3])
+    # df = pd.DataFrame({
+    #     "Title": ["Sample Title 1", "Sample Title 2", "Sample Title 3"],
+    #     "Summary": ["Sample Summary 1", "Sample Summary 2", "Sample Summary 3"],
+    #     "Sentiment": ["-1", "0", "1"],
+    #     "Resource": ["Reddit", "Youtube", "CNN"],
+    #     "Date": ["2024-02-10", "2024-02-09", "2024-02-08"],
+    #     "Link": ["http://example.com/link1", "http://example.com/link2", "http://example.com/link3"]
+    # }, index=[1, 2, 3])
 
-    table.value = df
+    controller.analyze_event()
+
     table.visible = True
 
 
@@ -87,3 +90,5 @@ template = pn.template.FastListTemplate(
     accent_base_color="#00A170",
     main=[main_page],
 ).servable()
+
+controller = Controller()
