@@ -1,5 +1,5 @@
 import nltk
-from nltk import word_tokenize, WordNetLemmatizer
+from nltk import WordNetLemmatizer
 from nltk.corpus import stopwords
 
 nltk.download('all')

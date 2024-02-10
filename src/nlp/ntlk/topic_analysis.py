@@ -11,7 +11,7 @@ from nltk.corpus import stopwords
 
 import gensim.corpora as corpora
 
-from src.nlp.ntlk.preprocessor import NTLKPreprocessor
+from nlp.ntlk.preprocessor import NTLKPreprocessor
 
 
 class LDATopicAnalyzer:

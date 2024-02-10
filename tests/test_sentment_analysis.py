@@ -1,6 +1,6 @@
-from src.nlp.ntlk.preprocessor import NTLKPreprocessor
-from src.nlp.ntlk.sentiment_analysis import NLTKSentimentAnalyzer
-from src.nlp.utils.nlp_utils import SentimentType
+from nlp.ntlk.preprocessor import NTLKPreprocessor
+from nlp.ntlk.sentiment_analysis import NLTKSentimentAnalyzer
+from nlp.utils.nlp_utils import SentimentType
 
 
 def test_sentiment_analysis():

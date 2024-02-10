@@ -1,7 +1,7 @@
 import json
 
-from src.response_parser.reddit_response_parser import RedditResponseParser
-from src.nlp.ntlk.summarization import TF_IDFSummarizator
+from response_parser.reddit_response_parser import RedditResponseParser
+from nlp.ntlk.summarization import TF_IDFSummarizator
 
 
 def test_summarization():

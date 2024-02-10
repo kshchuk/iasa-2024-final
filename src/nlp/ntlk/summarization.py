@@ -3,7 +3,7 @@ import math
 from nltk import WordNetLemmatizer, word_tokenize
 from nltk.corpus import stopwords
 
-from src.nlp.ntlk.preprocessor import NTLKPreprocessor
+from nlp.ntlk.preprocessor import NTLKPreprocessor
 
 
 class TF_IDFSummarizator:

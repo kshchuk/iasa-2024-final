@@ -1,7 +1,7 @@
 import json
 
-from src.nlp.ntlk.topic_analysis import LDATopicAnalyzer
-from src.response_parser.reddit_response_parser import RedditResponseParser
+from nlp.ntlk.topic_analysis import LDATopicAnalyzer
+from response_parser.reddit_response_parser import RedditResponseParser
 
 
 def test_topic_analysis():
@@ -27,4 +27,4 @@ def test_topic_analysis_best_topic_number():
     topics = analyzer.fit_best_topic_number(10, 2, 3)
     print(topics)
     analyzer.visualize_topics()
-    # assert len(topics) == 3
+    assert len(topics) == 2

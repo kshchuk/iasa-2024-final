@@ -1,9 +1,7 @@
-from enum import Enum, auto
-
 import nltk
 from nltk.sentiment import SentimentIntensityAnalyzer
 
-from src.nlp.utils.nlp_utils import SentimentType
+from nlp.utils.nlp_utils import SentimentType
 
 nltk.download('all')
 
