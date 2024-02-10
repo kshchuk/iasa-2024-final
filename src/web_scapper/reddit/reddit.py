@@ -36,7 +36,7 @@ class RedditReader(SearchEngine):
         posts = ArticleCollection(source='Reddit')
         if post_limit < 1:
             return posts
-        for submission in all_subreddits.search(search_tag, limit=post_limit, time_filter=period):
+        for submission in all_subreddits.search(search_tag, limit=post_limit, time_filter=period.lower()):
             title = submission.title
             score = submission.score
             text = submission.selftext
