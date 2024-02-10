@@ -1,8 +1,8 @@
-from web_scapper.web_scrapper import WebScrapper
+from web_scapper.web_scraper import WebScraper
 
 
 def test_web_scraper():
-    web_scrapper = WebScrapper().build()
+    web_scrapper = WebScraper().build()
     article_collections = web_scrapper.collect_data(keywords=["Trump", "Biden"],
                                                     services=["Reddit", "CNN"], period="month")
     assert len(article_collections) == 2

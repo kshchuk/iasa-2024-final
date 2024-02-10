@@ -1,7 +1,7 @@
 from nlp.ntlk.sentiment_analysis import NLTKSentimentAnalyzer
 from nlp.ntlk.summarization import TF_IDFSummarizator
 from nlp.utils.nlp_utils import SentimentType
-from web_scapper.web_scrapper import WebScrapper
+from web_scapper.web_scraper import WebScraper
 from pandas import DataFrame
 
 import app as app
@@ -10,7 +10,7 @@ sentence_number = 5
 
 
 class Controller:
-    def __init__(self, web_scrapper=WebScrapper(),
+    def __init__(self, web_scrapper=WebScraper(),
                  sentiment_analyzer=NLTKSentimentAnalyzer(),
                  summarizer=TF_IDFSummarizator()
                  ):

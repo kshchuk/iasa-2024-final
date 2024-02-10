@@ -6,7 +6,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from web_scapper.search.post import ArticleCollection
 
 
-class WebScrapper:
+class WebScraper:
 
     def __init__(self):
         self.service_map = {}
