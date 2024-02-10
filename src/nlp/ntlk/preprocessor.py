@@ -20,6 +20,9 @@ class NTLKPreprocessor:
 
         lemmatized_tokens = [self._lemmatizer.lemmatize(token) for token in filtered_tokens]
 
+        if len(lemmatized_tokens) <= 1:
+            return ""
+
         # Join the tokens back into a string
         processed_text = ' '.join(lemmatized_tokens)
 
