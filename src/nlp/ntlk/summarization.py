@@ -62,11 +62,12 @@ class TF_IDFSummarizator:
 #            summary_sentences = [sentence for sentence in summary_sentences if len(sentence) > 1]
 
         print(f"Summary length: {len(summary_sentences)}")
-        #if len(summary_sentences) > num_sentences:
-        #    summary_sentences = summary_sentences[:num_sentences]
+        if len(summary_sentences) > num_sentences:
+            summary_sentences = summary_sentences[:num_sentences]
 
         summary = ""
         for sentence in summary_sentences: summary += sentence + "."
+
         return summary
 
     def _create_frequency_matrix(self, sentences: list[str]) -> dict[str, dict[str, int]]:
