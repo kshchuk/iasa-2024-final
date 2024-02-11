@@ -42,7 +42,7 @@ class RedditReader(SearchEngine):
             text = submission.selftext
             created_time = submission.created
             date_obj = datetime.fromtimestamp(created_time)
-            link = 'reddit.com' + submission.permalink
+            link = 'https://www.reddit.com' + submission.permalink
             post = Article(title=title, content=text, votes=score, link=link, date_t=date_obj)
             submission.comments.replace_more(limit=0)
             posts.add(post)
