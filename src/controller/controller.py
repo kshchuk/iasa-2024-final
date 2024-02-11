@@ -86,7 +86,7 @@ class Controller:
                                      mode='lines', line_shape='spline'))
             fig.update_layout(title='Sentiment over Time', xaxis_title='Time', yaxis_title='Sentiment',
                               yaxis=dict(tickmode='array', tickvals=[-1, -0.5, 0, 0.5, 1], ticktext=['Negative', '-0.5', 'Neutral', '0.5', 'Positive']))
-            fig.show()
+            return fig
         else:
             print("No data to plot.")
 

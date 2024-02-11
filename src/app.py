@@ -5,6 +5,7 @@ import pandas as pd
 from controller.controller import controller
 
 pn.extension("ipywidgets", sizing_mode="stretch_width")
+pn.extension('plotly')
 pn.extension("tabulator")
 
 
@@ -15,7 +16,9 @@ def scrap_and_analyze(event):
     collection_data = options_box.collect_data()
     table.value = controller.analyze_event(collection_data)
     table.visible = True
-    # controller.plot_sentiment_over_time()
+    fig = controller.plot_sentiment_over_time()
+    plot_holder.clear()
+    plot_holder.append(fig)
 
 
 class OptionsBox:
@@ -74,9 +77,12 @@ table = pn.widgets.Tabulator(
     formatters=tabulator_formatters
 )
 
+plot_holder = pn.Row()
+
 main_page = pn.Column(
     user_input,
     table,
+    plot_holder
 )
 
 template = pn.template.FastListTemplate(
