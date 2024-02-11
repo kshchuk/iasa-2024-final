@@ -191,8 +191,8 @@ class TF_IDFSummarizator:
         :rtype: float
         """
 
-#        if len(sentenceValue) == 0:
-#            return 0
+        if len(sentenceValue) == 0:
+            return 0
 
         sumValues = 0
         for entry in sentenceValue:
