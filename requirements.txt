@@ -16,3 +16,4 @@ pyLDAvis~=3.4.1
 beautifulsoup4~=4.12.3
 uuid~=1.30
 pandas~=2.2.0
+plotly~=5.18.0

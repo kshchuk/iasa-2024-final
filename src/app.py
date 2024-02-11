@@ -12,20 +12,10 @@ def scrap_and_analyze(event):
     if not event:
         return
 
-    # df = pd.DataFrame({
-    #     "Title": ["Sample Title 1", "Sample Title 2", "Sample Title 3"],
-    #     "Summary": ["Sample Summary 1", "Sample Summary 2", "Sample Summary 3"],
-    #     "Sentiment": ["-1", "0", "1"],
-    #     "Resource": ["Reddit", "Youtube", "CNN"],
-    #     "Date": ["2024-02-10", "2024-02-09", "2024-02-08"],
-    #     "Link": ["http://example.com/link1", "http://example.com/link2", "http://example.com/link3"]
-    # }, index=[1, 2, 3])
     collection_data = options_box.collect_data()
     table.value = controller.analyze_event(collection_data)
-
-    print(controller.get_statistics())
-
     table.visible = True
+    # controller.plot_sentiment_over_time()
 
 
 class OptionsBox:
