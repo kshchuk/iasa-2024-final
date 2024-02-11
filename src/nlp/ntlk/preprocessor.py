@@ -4,6 +4,7 @@ from nltk.corpus import stopwords
 
 nltk.download('wordnet')
 nltk.download('stopwords')
+nltk.download('punkt')
 
 
 class NTLKPreprocessor:
