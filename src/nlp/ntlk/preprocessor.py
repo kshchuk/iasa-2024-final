@@ -2,7 +2,8 @@ import nltk
 from nltk import WordNetLemmatizer
 from nltk.corpus import stopwords
 
-nltk.download('all')
+nltk.download('wordnet')
+nltk.download('stopwords')
 
 
 class NTLKPreprocessor:

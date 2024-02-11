@@ -3,7 +3,7 @@ from nltk.sentiment import SentimentIntensityAnalyzer
 
 from nlp.utils.nlp_utils import SentimentType
 
-nltk.download('all')
+nltk.download('vader_lexicon')
 
 
 class NLTKSentimentAnalyzer:
