@@ -2,7 +2,7 @@ import pandas as pd
 from nlp.ntlk.sentiment_analysis import NLTKSentimentAnalyzer
 from nlp.ntlk.summarization import TF_IDFSummarizator
 from nlp.utils.nlp_utils import SentimentType
-from web_scapper.web_scraper import WebScraper
+from web_analyzer.web_scraper import WebScraper
 import plotly.graph_objs as go
 from pandas import DataFrame
 

@@ -1,4 +1,4 @@
-from web_scapper.web_scraper import WebScraper
+from web_analyzer.web_scraper import WebScraper
 
 
 def test_web_scraper():

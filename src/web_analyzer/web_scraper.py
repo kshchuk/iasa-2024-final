@@ -1,9 +1,9 @@
-from web_scapper.youtube.youtube import YouTubeReader
-from web_scapper.reddit.reddit import RedditReader
-from web_scapper.cnn.cnn import CNNReader
+from web_analyzer.youtube.youtube import YouTubeReader
+from web_analyzer.reddit.reddit import RedditReader
+from web_analyzer.cnn.cnn import CNNReader
 from typing import List
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from web_scapper.search.post import ArticleCollection
+from web_analyzer.search.post import ArticleCollection
 
 
 class WebScraper:

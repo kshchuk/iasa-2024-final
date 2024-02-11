@@ -1,5 +1,5 @@
-from web_scapper.reddit.reddit import RedditReader
-from web_scapper.search.post import Comment
+from web_analyzer.reddit.reddit import RedditReader
+from web_analyzer.search.post import Comment
 
 
 def test_reddit_api():

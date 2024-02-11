@@ -1,11 +1,11 @@
 from datetime import datetime, timedelta
 from googleapiclient.discovery import build
-from web_scapper.search.post import Article
-from web_scapper.search.post import Comment
-from web_scapper.search.post import ArticleCollection
+from web_analyzer.search.post import Article
+from web_analyzer.search.post import Comment
+from web_analyzer.search.post import ArticleCollection
 from typing import List
 from environment.env_variables import Environment
-from web_scapper.search.common_search import SearchEngine
+from web_analyzer.search.common_search import SearchEngine
 from googleapiclient.errors import HttpError
 
 

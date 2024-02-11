@@ -1,5 +1,3 @@
-from datetime import date
-
 
 class Article:
     def __init__(self, title="", content="", votes=0, date_t=None, link='', comments=None):

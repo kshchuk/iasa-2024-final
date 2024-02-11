@@ -1,5 +1,5 @@
 from typing import List
-from web_scapper.search.post import Article
+from web_analyzer.search.post import Article
 from abc import ABC, abstractmethod
 
 

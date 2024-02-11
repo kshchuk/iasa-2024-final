@@ -1,6 +1,6 @@
 import datetime
 
-from web_scapper.youtube.youtube import YouTubeReader
+from web_analyzer.youtube.youtube import YouTubeReader
 
 
 def test_youtube_api():

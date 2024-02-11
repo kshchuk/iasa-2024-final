@@ -3,10 +3,10 @@ from bs4 import BeautifulSoup
 import json
 
 from typing import List
-from web_scapper.search.post import Article
-from web_scapper.search.post import ArticleCollection
-from web_scapper.url_builder import CNNSearch
-from web_scapper.search.common_search import SearchEngine
+from web_analyzer.search.post import Article
+from web_analyzer.search.post import ArticleCollection
+from web_analyzer.url_builder import CNNSearch
+from web_analyzer.search.common_search import SearchEngine
 from datetime import datetime, timedelta
 
 

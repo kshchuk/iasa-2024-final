@@ -1,10 +1,10 @@
 import praw.models
 import environment.env_variables as env
 from typing import List
-from web_scapper.search.post import Article
-from web_scapper.search.post import ArticleCollection
-from web_scapper.search.post import Comment
-from web_scapper.search.common_search import SearchEngine
+from web_analyzer.search.post import Article
+from web_analyzer.search.post import ArticleCollection
+from web_analyzer.search.post import Comment
+from web_analyzer.search.common_search import SearchEngine
 from datetime import datetime
 
 

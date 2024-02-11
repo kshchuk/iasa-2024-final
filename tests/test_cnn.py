@@ -1,4 +1,4 @@
-from web_scapper.cnn.cnn import CNNReader
+from web_analyzer.cnn.cnn import CNNReader
 
 
 def test_cnn_api():
